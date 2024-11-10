@@ -166,3 +166,81 @@ a.secondary {
     filter: invert();
   }
 }
+
+/* Custom CSS to reset some styling */
+.board {
+  align-self: center;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1 /1;
+  grid: repeat(3, 1fr) / repeat(3, 1fr);
+  grid-template-areas:
+    "a1 a2 a3"
+    "b1 b2 b3"
+    "c1 c2 c3";
+}
+
+
+.a1 {
+  grid-area: a1;
+}
+
+.a2 {
+  grid-area: a2;
+}
+
+.a3 {
+  grid-area: a3;
+}
+
+.b1 {
+  grid-area: b1;
+}
+
+.b2 {
+  grid-area: b2;
+}
+
+.b3 {
+  grid-area: b3;
+}
+
+.c1 {
+  grid-area: c1;
+}
+
+.c2 {
+  grid-area: c2;
+}
+
+.c3 {
+  grid-area: c3;
+}
+
+/* tic - tac - toe CSS from React tutorial */
+
+.square {
+  border: 1px solid #999;
+  grid-area: 1fr;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+}
+
+
+.status {
+  margin-bottom: 10px;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
