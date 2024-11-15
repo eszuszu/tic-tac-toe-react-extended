@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import {NewComponent,Board, get, getGameState} from "./ui.js";
+import { NewComponent, Game } from "./ui.js";
 
 
 export default function Home() {
@@ -17,10 +17,10 @@ export default function Home() {
 
         <NewComponent />
         <h1>First things first, here's tic-tac-toe</h1>
-        <Board />
+        <Game />
       </main>
       <footer className={styles.footer}>
-        <h2>Sometimes, yes, sometimes.</h2>
+        <h2>Sometimes, X, sometimes O.</h2>
       </footer>
     </div>
   );
