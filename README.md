@@ -6,7 +6,7 @@ This is was primarily a reactproject implementing tic-tac-toe following along wi
 
 ### It features implementations of
 - useState to manage the game board state
-- A JavaScript Map object to store rendering configuration for each game cell
+- A JavaScript Map object to store rendering configuration for each game cell in state
 - The history of each move, stored in state as a board configuration
 - Map keys ordered by row and column in an alphanumeric a1, a2, a3... b3...-> n fashion.
 - The game board's rows and columns can be specified when it's component is called, up to "K" rows (10).
