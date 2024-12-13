@@ -41,7 +41,7 @@ const initializeBoardConfig = (rows = 3, cols = 3) => {
 };
 
 
-export function Board({ xIsNext, config, playerXState, playerOState, toggledSquares, onPlay }) {
+export function Board({ xIsNext, config, playerXState, playerOState, toggledSquares, onPlay, winner}) {
 
   const currentPlayer = xIsNext ? "X" : "O";
   const currentPlayerState = xIsNext ? playerXState : playerOState;
@@ -58,7 +58,6 @@ export function Board({ xIsNext, config, playerXState, playerOState, toggledSqua
 
   }
 
-  const winner = calculateWinner(currentPlayerState);
   let status;
   if (winner) {
     status = `Winner winner chicken dinner! Congrat's player ${currentPlayer}`;
@@ -132,6 +131,8 @@ export function Game() {
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
   const { config, cellPositions = [], toggledSquares } = history[currentMove];
+  const [winner, setWinner] = useState(null);
+
 
 
   //Initialize game state and board configuration history
@@ -142,15 +143,19 @@ export function Game() {
   console.log(config);
   function handlePlay(key) {
     //Primary click handling logic
+    if (winner || config.get(key) !== null) return;
 
+    const position = Array.from(config.keys()).indexOf(key);
+    console.log(position);
     console.log('Key: ', key, 'Config ', Array.from(config.keys()))
-    const position = cellPositions[Array.from(config.keys()).indexOf(key)];
-
+    console.log(currentPlayerState);
     const updatedPlayerState = setBit(currentPlayerState, position);
+    console.log(updatedPlayerState);
     const newBoardConfig = new Map(config);
     newBoardConfig.set(key, xIsNext ? "X" : "O");
 
     const newToggledSquares = { ...toggledSquares, [key]: true };
+    console.log(newToggledSquares);
     const nextHistory = [
       ...history.slice(0, currentMove + 1),
       { config: newBoardConfig, cellPositions, toggledSquares: newToggledSquares }
@@ -161,22 +166,35 @@ export function Game() {
     setCurrentMove(nextHistory.length - 1);
 
 
-
-
     //update the players state.
     xIsNext ? setPlayerXState(updatedPlayerState) : setPlayerOState(updatedPlayerState);
-
+    console.log(updatedPlayerState)
+    //Ensure there have been at least 5 moves before attempting to calculate a winner
+    const movesMade = currentMove + 1;
+      if (movesMade >= 5 && calculateWinner(updatedPlayerState)){
+        setWinner(xIsNext ? "X" : "O")
+      }
     //Check if the move was a winning move, if so, return.
-    if (calculateWinner(updatedPlayerState)) return;
-
-  }
+    
+    }
 
   function jumpTo(nextMove) {
     //Update current move
     setCurrentMove(nextMove);
 
 
-    const { toggledSquares } = history[nextMove];
+    const { toggledSquares, config } = history[nextMove];
+
+    // Reset winner based on the new move's state
+    const playerXState = history[nextMove].config.get("X");
+    const playerOState = history[nextMove].config.get("O");
+
+    setPlayerXState(playerXState);
+    setPlayerOState(playerOState);
+    
+    const winner = calculateWinner(playerXState) || calculateWinner(playerOState);
+    setWinner(winner);
+
     setHistory(history.map((entry, index) => {
       if (index === nextMove) {
         return { ...entry, toggledSquares };
@@ -213,6 +231,7 @@ export function Game() {
         playerOState={playerOState}
         toggledSquares={toggledSquares}
         onPlay={handlePlay}
+        winner={winner}
       />
       <section className='game-info'>
         <ol>{moves}</ol>

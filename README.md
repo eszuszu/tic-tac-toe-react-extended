@@ -1,6 +1,7 @@
 # Tic-Tac-Toe Game in Next.js
 
-### *This is a Next.js project, bootstrapped with create-next-app. It’s an extended version of React’s Tic-Tac-Toe Tutorial, with additional features and customizations.*
+***This is a Next.js project, bootstrapped with create-next-app. It’s an extended version of React’s Tic-Tac-Toe Tutorial, with additional features and customizations. You can check it out at https://react.dev/learn/tutorial-tic-tac-toe but do note that there are major differences between this project and that tutorial***
+
 ## Features
 
   - Game State Management: useState to manage board, move history, and player turns.
@@ -18,4 +19,6 @@
 
 ## Summary
 
-**This project reinforced key React and Next.js concepts, strengthened my understanding of bitwise operations, and enhanced my development setup. It’s also a robust foundation for future games and interactive projects.**
+**This project reinforced key React and Next.js concepts, strengthened my understanding of bitwise operations, and enhanced my development setup. It’s also a robust foundation for future grid based games and interactive projects.**
+
+>**License**: No official license. Feel free to clone or fork the repository for personal use.

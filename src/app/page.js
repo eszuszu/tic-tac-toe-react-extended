@@ -9,9 +9,9 @@ export default function Home() {
       <main className={styles.main}>
         <ol>
           <li>
-            Hello World, I'm hijacking this Next boilerplate <code>src/app/page.js</code>.
+            Hello World, I'm hijacking this Next boilerplate to learn.<code>src/app/page.js</code>.
           </li>
-          <li>Now I'ma get paid.</li>
+          <li>Let's get it!</li>
         </ol>
 
 
