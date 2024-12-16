@@ -21,4 +21,4 @@
 
 **This project reinforced key React and Next.js concepts, strengthened my understanding of bitwise operations, and enhanced my development setup. It’s also a robust foundation for future grid based games and interactive projects.**
 
->**License**: No official license. Feel free to clone or fork the repository for personal use.
+>**License & Acknowledgements**: No official license, this project uses resources from React, Next.js—see their documentation for licensing terms. Feel free to clone or fork the repository for personal use.
